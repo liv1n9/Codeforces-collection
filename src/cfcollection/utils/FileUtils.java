@@ -2,8 +2,17 @@ package cfcollection.utils;
 
 public class FileUtils {
     public static String sourceExtension(String language) {
-        if (language.contains("C++")) {
+        if (language.contains("GNU C++")) {
             return ".cpp";
+        }
+        if (language.contains("GNU C")) {
+            return ".c";
+        }
+        if (language.contains("C#")) {
+            return ".cs";
+        }
+        if (language.contains("Pascal") || language.contains("FPC")) {
+            return ".pas";
         }
         if (language.contains("JavaScript")) {
             return ".js";
@@ -14,6 +23,6 @@ public class FileUtils {
         if (language.contains("Py")) {
             return ".py";
         }
-        return "";
+        return ".txt";
     }
 }

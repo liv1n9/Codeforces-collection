@@ -58,7 +58,7 @@ public class MainScreenController extends Component {
     @FXML
     private void setDirectory(ActionEvent actionEvent) {
         JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.dir")));
+        file.setCurrentDirectory(new java.io.File("."));
         file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         file.setAcceptAllFileFilterUsed(false);
         file.showOpenDialog(this);

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cfcollection.controller.mainscreen.MainScreenController">
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cfcollection.controller.mainscreen.MainScreenController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -21,7 +21,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <TabPane fx:id="tabPane" prefHeight="224.0" prefWidth="230.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" prefHeight="225.0" prefWidth="285.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Handle">
                <content>
@@ -41,7 +41,7 @@
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin></TextField>
-                        <Button fx:id="getButton" mnemonicParsing="false" onAction="#getSources" text="Get" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Button fx:id="getButton" defaultButton="true" mnemonicParsing="false" onAction="#getSources" prefHeight="25.0" prefWidth="53.0" text="Get" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                         <Separator prefWidth="200.0" GridPane.rowIndex="2" />
                         <Label fx:id="progressStatus" text="Progress" GridPane.rowIndex="3">
                            <GridPane.margin>
@@ -87,7 +87,7 @@
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin></Label>
-                        <ChoiceBox fx:id="mode" prefHeight="25.0" prefWidth="301.0" GridPane.rowIndex="6">
+                        <ChoiceBox fx:id="option" prefHeight="25.0" prefWidth="301.0" GridPane.rowIndex="6">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin></ChoiceBox>

@@ -1,21 +1,19 @@
-package cfcollection.controller.mainscreen;
+package com.cfcollection.controller.mainscreen;
 
-import cfcollection.model.Submission;
-import cfcollection.utils.*;
+import com.cfcollection.model.Submission;
+import com.cfcollection.utils.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -29,7 +27,7 @@ import java.util.TreeMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainScreenController extends Component {
-    private final long SLEEP_DURATION = 200;
+    private final long SLEEP_DURATION = 250;
     private final int MAX_CONTEST_ID = 10000;
     @FXML
     private TabPane tabPane;
@@ -40,11 +38,9 @@ public class MainScreenController extends Component {
     @FXML
     private TextField directory;
     @FXML
-    private Button browseButton;
-    @FXML
     private Button getButton;
     @FXML
-    private ChoiceBox mode;
+    private ChoiceBox option;
     @FXML
     private Label progressStatus;
     @FXML
@@ -52,7 +48,8 @@ public class MainScreenController extends Component {
 
     @FXML
     private void initialize() {
-        mode.setItems(FXCollections.observableArrayList("All", "Time", "Memory"));
+        option.setItems(FXCollections.observableArrayList("All", "Time", "Memory"));
+        option.getSelectionModel().selectFirst();
     }
 
     @FXML
@@ -75,57 +72,56 @@ public class MainScreenController extends Component {
 
     private TreeMap<String, ArrayList<Submission>> collectData(JsonObject data) {
         JsonArray result = data.getAsJsonArray("result");
-        TreeMap<String, ArrayList<Submission>> okSubmission = new TreeMap<String, ArrayList<Submission>>();
+        TreeMap<String, ArrayList<Submission>> okSubmission = new TreeMap<>();
         for (JsonElement submission: result) {
             if (submission.getAsJsonObject().getAsJsonPrimitive("verdict").getAsString().equals("OK")) {
-                String contestId = submission.getAsJsonObject().getAsJsonPrimitive("contestId").getAsString();
+                String contestId = submission.getAsJsonObject()
+                        .getAsJsonPrimitive("contestId").getAsString();
                 if (Integer.parseInt(contestId) > MAX_CONTEST_ID) continue;
                 Submission tmp = new Submission();
                 tmp.setId(submission.getAsJsonObject().getAsJsonPrimitive("id").getAsInt());
                 tmp.setContestId(contestId);
                 tmp.setProblemIndex(submission.getAsJsonObject().getAsJsonObject("problem").
                         getAsJsonPrimitive("index").getAsCharacter());
-                tmp.setTime(submission.getAsJsonObject().getAsJsonPrimitive("timeConsumedMillis").getAsInt());
-                tmp.setMemory(submission.getAsJsonObject().getAsJsonPrimitive("memoryConsumedBytes").getAsInt());
-                tmp.setLanguage(submission.getAsJsonObject().getAsJsonPrimitive("programmingLanguage").getAsString());
+                tmp.setTime(submission.getAsJsonObject()
+                        .getAsJsonPrimitive("timeConsumedMillis").getAsInt());
+                tmp.setMemory(submission.getAsJsonObject()
+                        .getAsJsonPrimitive("memoryConsumedBytes").getAsInt());
+                tmp.setLanguage(submission.getAsJsonObject()
+                        .getAsJsonPrimitive("programmingLanguage").getAsString());
                 String problem = tmp.getContestId() + tmp.getProblemIndex();
                 okSubmission.computeIfAbsent(problem, k -> new ArrayList<>());
                 okSubmission.get(problem).add(tmp);
             }
         }
-        if (mode.getValue() == "Time") {
-            okSubmission.forEach((problem, submissions) -> {
-                submissions.sort(new TimeComparator());
-            });
-        } else if (mode.getValue() == "Memory") {
-            okSubmission.forEach((problem, submissions) -> {
-                submissions.sort(new MemoryComparator());
-            });
+        if (option.getValue() == "Time") {
+            okSubmission.forEach((problem, submissions) -> submissions.sort(new TimeComparator()));
+        } else if (option.getValue() == "Memory") {
+            okSubmission.forEach((problem, submissions) -> submissions.sort(new MemoryComparator()));
         }
 
         return okSubmission;
     }
 
-    private void getSource(Submission submission, int folderNumber, AtomicInteger index, AtomicInteger total,
-                           boolean multi) {
+    private void getSource(Submission submission, int order, AtomicInteger index, AtomicInteger total, boolean multi) {
         index.getAndIncrement();
         String submissionUrl = "https://codeforces.com/contest/" + submission.getContestId() + "/submission/"
                 + submission.getId();
-        String folderName = submission.getContestId() + submission.getProblemIndex();
-        if (multi) {
-            folderName += "_" + Integer.toString(folderNumber);
-        }
-        String currentStatus = folderName + " (" + Integer.toString(index.get()) + " / " + Integer.toString(total.get()) + ")";
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                progressStatus.setText(currentStatus);
-                progress.setProgress(index.get() * 1.0 / total.get());
-            }
+        String folderName = submission.getContestId();
+        String currentStatus = "Contest: " + folderName + " (" + index.get() + " / " + total.get() + ")";
+        Platform.runLater(() -> {
+            progressStatus.setText(currentStatus);
+            progress.setProgress(index.get() * 1.0 / total.get());
         });
         try {
-            String subDirectory = directory.getText() + "\\" + folderName;
-            String fileName = subDirectory + "\\main" + FileUtils.sourceExtension(submission.getLanguage());
+            String subDirectory = directory.getText() + "/" + folderName;
+            String fileName = subDirectory + "/" +
+                    submission.getContestId() +
+                    Character.toLowerCase(submission.getProblemIndex());
+            if (multi) {
+                fileName += "_" + order;
+            }
+            fileName += FileUtils.sourceExtension(submission.getLanguage());
             try {
                 Thread.sleep(SLEEP_DURATION);
             } catch (InterruptedException ignored) {
@@ -140,12 +136,7 @@ public class MainScreenController extends Component {
             writer.close();
 
         } catch (IOException e) {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    progressStatus.setText(currentStatus + " (Error)");
-                }
-            });
+            Platform.runLater(() -> progressStatus.setText(currentStatus + " (Error)"));
         }
     }
 
@@ -163,49 +154,39 @@ public class MainScreenController extends Component {
     private int programError() {
         final int HANDLE = (handle.getText() == null || handle.getText().length() == 0) ? 1 : 0;
         final int DIRECTORY = (directory.getText() == null || directory.getText().length() == 0) ? 1 : 0;
-        final int MODE = (mode.getValue() == null) ? 1 : 0;
+        final int MODE = (option.getValue() == null) ? 1 : 0;
         return HANDLE + (DIRECTORY << 1) + (MODE << 2);
     }
 
     @FXML
-    private void getSources(ActionEvent actionEvent){
+    private void getSources(){
         Task<Void> backgroundTask = new Task<Void>() {
             @Override
-            protected Void call() throws Exception {
+            protected Void call() {
                 setDisable(true);
                 int error = programError();
                 if (error > 0) {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            String errorMessage;
-                            if (error == 1) {
-                                errorMessage = "Handle is empty!";
+                    Platform.runLater(() -> {
+                        String errorMessage;
+                        if (error == 1) {
+                            errorMessage = "Handle is empty!";
+                        } else {
+                            if (error == 2 || error == 3) {
+                                errorMessage = "Directory is not set!";
+                            } else if (error == 4 || error == 5) {
+                                errorMessage = "Mode is empty!";
                             } else {
-                                if (error == 2 || error == 3) {
-                                    errorMessage = "Directory is not set!";
-                                } else if (error == 4 || error == 5) {
-                                    errorMessage = "Mode is empty!";
-                                } else {
-                                    errorMessage = "Settings is empty!";
-                                }
+                                errorMessage = "Settings is empty!";
                             }
-                            System.out.println(error);
-                            System.out.println(errorMessage);
-                            Alert alert = AlertUtils.getNonHeaderAlert(null, errorMessage);
-                            alert.showAndWait();
-                            if (error > 1) {
-                                tabPane.getSelectionModel().select(1);
-                            }
+                        }
+                        Alert alert = AlertUtils.getNonHeaderAlert(null, errorMessage);
+                        alert.showAndWait();
+                        if (error > 1) {
+                            tabPane.getSelectionModel().select(1);
                         }
                     });
                 } else {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressStatus.setText("Collecting data...");
-                        }
-                    });
+                    Platform.runLater(() -> progressStatus.setText("Collecting data..."));
                     String api = "https://codeforces.com/api/user.status?handle=" + handle.getText();
                     JsonObject user = null;
                     try {
@@ -214,17 +195,14 @@ public class MainScreenController extends Component {
                         e.printStackTrace();
                     }
                     if (user == null || user.getAsJsonPrimitive("status").getAsString().equals("FAILED")) {
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                Alert alert = AlertUtils.getNonHeaderAlert(null, "Handle not found!");
-                                alert.showAndWait();
-                                resetProgress();
-                            }
+                        Platform.runLater(() -> {
+                            Alert alert = AlertUtils.getNonHeaderAlert(null, "Handle not found!");
+                            alert.showAndWait();
+                            resetProgress();
                         });
                     } else {
                         TreeMap<String, ArrayList<Submission> > data = collectData(user);
-                        boolean multi = mode.getValue() == "All";
+                        boolean multi = option.getValue() == "All";
                         AtomicInteger total = new AtomicInteger();
                         data.forEach((problem, submissions) -> {
                             if (multi) total.addAndGet(submissions.size());
@@ -237,22 +215,14 @@ public class MainScreenController extends Component {
                                 if (!multi) break;
                             }
                         });
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                Alert alert = AlertUtils.getNonHeaderAlert(null, "Done!");
-                                alert.showAndWait();
-                                resetProgress();
-                            }
+                        Platform.runLater(() -> {
+                            Alert alert = AlertUtils.getNonHeaderAlert(null, "Done!");
+                            alert.showAndWait();
+                            resetProgress();
                         });
                     }
                 }
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        setDisable(false);
-                    }
-                });
+                Platform.runLater(() -> setDisable(false));
 
                 return null;
             }

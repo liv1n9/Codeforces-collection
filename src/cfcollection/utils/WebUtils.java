@@ -1,11 +1,10 @@
-package cfcollection.utils;
+package com.cfcollection.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 public class WebUtils {
 

@@ -1,6 +1,6 @@
-package cfcollection.utils;
+package com.cfcollection.utils;
 
-import cfcollection.model.Submission;
+import com.cfcollection.model.Submission;
 
 import java.util.Comparator;
 

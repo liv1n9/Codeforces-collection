@@ -1,4 +1,4 @@
-package cfcollection.utils;
+package com.cfcollection.utils;
 
 import javafx.scene.control.Alert;
 

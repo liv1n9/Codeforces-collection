@@ -1,4 +1,4 @@
-package com.cfcollection.utils;
+package cfcollection.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;

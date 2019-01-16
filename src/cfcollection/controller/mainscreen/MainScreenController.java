@@ -1,7 +1,7 @@
-package com.cfcollection.controller.mainscreen;
+package cfcollection.controller.mainscreen;
 
-import com.cfcollection.model.Submission;
-import com.cfcollection.utils.*;
+import cfcollection.model.Submission;
+import cfcollection.utils.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

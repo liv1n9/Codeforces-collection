@@ -1,4 +1,4 @@
-package com.cfcollection.utils;
+package cfcollection.utils;
 
 public class FileUtils {
     public static String sourceExtension(String language) {

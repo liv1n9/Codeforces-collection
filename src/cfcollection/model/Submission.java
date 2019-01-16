@@ -1,4 +1,4 @@
-package com.cfcollection.model;
+package cfcollection.model;
 
 public class Submission {
     private int id;

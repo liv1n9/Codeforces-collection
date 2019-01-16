@@ -1,12 +1,27 @@
 <h1>Introduce</h1>
-<p><strong>Codeforces-collection</strong> is a Java tool. It can help get all accepted submissions from Codeforces which are not Gym's submissions.</p>
-<p>Codeforces-collection can convert submissions of languages: C++, C, C#, Java, Python, JavaScript and Pascal to files with correspond extensions such as ".cpp", ".java", ".py", ... The others languages will have ".txt" extensions</p>
-<p>Codeforces-collection uses <strong>SDK 1.8.0_162</strong>. You can simply run the application by executing <strong>codeforces-collection/out/artifacts/codeforces_collection_jar</strong>. Codeforces-collection works on Windows 10. It hasn't been tested on others operating systems.</p>
+<p><strong>Codeforces-collection</strong> is a Java application which helps you get your accepted submissions of Codeforces.</p>
+<p>Codeforces-collection supports file extensions of C++, C, C#, Java, Python, JavaScript and Pascal (.cpp, .c, .cs, .java,...).</p>
+<p>Requirement: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8u202</a>.</p>
+<p>Codeforces-collection supports Windows 10 and Linux/Ubuntu.</p>
 <h1>Instruction</h1>
-<p>You only have to enter a Codeforces's handle, set directory where you store the submissions, and choose mode.</p>
-<p>There are 3 modes: <strong>All</strong>, <strong>Time</strong> and <strong>Memory</strong>.</p>
-<ul>
-<li><strong>All</strong>: You will be able to get all public accepted submissions of the account you choosed, which are every submissions except Gym's. Each of them which solved problem <em>&lt;problem_index&gt;</em> of contest with index <em>&lt;contest_id&gt;</em> will be stored in a folder named <em>&lt;contest_id&gt;&lt;problem_index&gt;</em>, for example: 221B. If there are more than one accepted solutions of one problem, they will be stored in multiple folders with same prefix <em>&lt;contest_id&gt;&lt;problem_index&gt;</em>, and have different suffixes numbered from 1 &nbsp;<em>&lt;_number&gt;</em></li>, for example: 265A_1, 265A_2, 265A_3.
-  <li><strong>Time</strong>: Submissions will be stored in a similar way to <strong>"All"</strong> mode. The different is the only submission with the fastest running time will be chosen per problem.
-  <li><strong>Memory</strong>:  Similar to <strong>"Time"</strong> mode, but the submission with the smallest memory will be chosen instead.
-</ul>
+<p>To run the application, you need to excute jar file: /classes/artifacts/codeforces_collection_jar/codeforces-collection.jar</p>
+<p>Your submission will be stored in many folders, each folder represents one contest. For example, you submission of contest 321 will be stored in folder "321".</p>
+<img src="https://c2.staticflickr.com/8/7846/39804422223_d6350c9d72_z.jpg"></img>
+<p>There are three steps you need to do:</p>
+<ol>
+  <li>Enter a handle of you (or of someone that you love).</li>
+  <img src="https://c2.staticflickr.com/8/7880/32894102398_93d939d6d5_o.png"></img>
+  <li>Choose directory where store your submissions</li>
+  <img src="https://c2.staticflickr.com/8/7919/45854496255_8f6fb910c9_o.png"></img>
+  <li>Choose the collecting mode. There are also three modes for you:
+    <ul>
+      <li><strong>All</strong>: You will get all your accepted submissions. If you got more than one accepted submission of one problem, for example 2 accepted C++ submissions of problem 265C, you will get 2 file 265c_1.cpp, 265c_2.cpp. Otherwise you will get only one file, for example 265c.cpp.</li>
+      <li><strong>Time</strong>: For each problem, you will get an accepted submission which has fastest running time.</li>
+      <li><strong>Memory</strong>: For each problem, you will get an accepted submission which has smallest memory used.</li>
+    </ul>
+  </li>
+</ol>
+<p>Now press "Get" and enjoy!</p>
+<img src="https://c2.staticflickr.com/8/7802/46769801651_a83a4fbe1f_o.png"></img>
+  
+  

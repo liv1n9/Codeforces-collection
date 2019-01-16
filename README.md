@@ -24,5 +24,5 @@
 <p>Now press "Get" and enjoy!</p>
 <img src="https://c2.staticflickr.com/8/7802/46769801651_a83a4fbe1f_o.png"></img>
 <h1>Issues</h1>
-<p>This project is my Java practicing, so the application might get some issues/</p>
+<p>This project is my Java practicing, so the application might get some issues.</p>
 <p>If you get any problems while using please let me know, i will fix it as soon as i can!</p>

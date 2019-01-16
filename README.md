@@ -1,7 +1,7 @@
 <h1>Introduce</h1>
 <p><strong>Codeforces-collection</strong> is a Java application which helps you get your accepted submissions of Codeforces.</p>
 <p>Codeforces-collection supports file extensions of C++, C, C#, Java, Python, JavaScript and Pascal (.cpp, .c, .cs, .java,...).</p>
-<p>Requirement: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8u202</a>.</p>
+<p>Requirement: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8u202</a> or above.</p>
 <p>Codeforces-collection supports Windows 10 and Linux/Ubuntu.</p>
 <h1>Instruction</h1>
 <p>To run the application, you need to excute jar file: /classes/artifacts/codeforces_collection_jar/codeforces-collection.jar</p>

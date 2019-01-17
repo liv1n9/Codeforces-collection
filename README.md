@@ -9,7 +9,7 @@
 <img src="https://c2.staticflickr.com/8/7846/39804422223_d6350c9d72_z.jpg"></img>
 <p>There are three steps you need to do:</p>
 <ol>
-  <li>Enter a handle of you (or of someone that you love). You only be able to type an exist handle</li>
+  <li>Enter a handle of you (or of someone that you love). You only be able to type an exists handle.</li>
   <img src="https://c2.staticflickr.com/8/7880/32894102398_93d939d6d5_o.png"></img>
   <li>Choose directory where store your submissions's folder.</li>
   <img src="https://c2.staticflickr.com/8/7919/45854496255_8f6fb910c9_o.png"></img>

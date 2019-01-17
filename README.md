@@ -3,8 +3,10 @@
 <p>Codeforces-collection supports file extensions of C++, C, C#, Java, Python, JavaScript and Pascal (.cpp, .c, .cs, .java,...).</p>
 <p>Requirement: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8u202</a> or above.</p>
 <p>Codeforces-collection supports Windows 10 and Linux/Ubuntu.</p>
+<h1>Update</h1>
+I remove all the source codes since i realize we can see them in jar file
 <h1>Instruction</h1>
-<p>To run the application, you need to excute jar file: <code>/classes/artifacts/codeforces_collection_jar/codeforces-collection.jar</code>. You only need to download this jar file, but i still push all the source codes so that you can check whether i put some malwares in.</p>
+<p>To run the application, you need to excute jar file: <code>/classes/artifacts/codeforces_collection_jar/codeforces-collection.jar</code>.</p>
 <p>Your submissions will be stored in many folders, each folder represents one contest. For example, you submissions of contest 321 will be stored in folder "321".</p>
 <img src="https://c2.staticflickr.com/8/7846/39804422223_d6350c9d72_z.jpg"></img>
 <p>There are three steps you need to do:</p>

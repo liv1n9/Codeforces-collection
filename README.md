@@ -4,7 +4,7 @@
 <p>Requirement: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8u202</a> or above.</p>
 <p>Codeforces-collection supports Windows 10 and Linux/Ubuntu.</p>
 <h1>Update</h1>
-I remove all the source codes since i realize we can see them in jar file.
+<p>I remove all the source codes since i realize we can see them in jar file.</p>
 <h1>Instruction</h1>
 <p>To run the application, you need to excute jar file: <code>/classes/artifacts/codeforces_collection_jar/codeforces-collection.jar</code>.</p>
 <p>Your submissions will be stored in many folders, each folder represents one contest. For example, you submissions of contest 321 will be stored in folder "321".</p>

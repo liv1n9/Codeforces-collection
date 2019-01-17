@@ -1,5 +1,5 @@
 <h1>Introduce</h1>
-<p><strong>Codeforces-collection</strong> is a Java application which helps you get your accepted submissions of Codeforces, except Gym contests.</p>
+<p><strong>Codeforces-collection</strong> is a Java application which helps you get your accepted submissions on Codeforces, except Gym contests.</p>
 <p>Codeforces-collection supports file extensions of C++, C, C#, Java, Python, JavaScript and Pascal (.cpp, .c, .cs, .java,...).</p>
 <p>Requirement: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8u202</a> or above.</p>
 <p>Codeforces-collection supports Windows 10 and Linux/Ubuntu.</p>

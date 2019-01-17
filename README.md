@@ -11,7 +11,7 @@
 <ol>
   <li>Enter a handle of you (or of someone that you love). You only be able to enter an exists handle.</li>
   <img src="https://c2.staticflickr.com/8/7880/32894102398_93d939d6d5_o.png"></img>
-  <li>Choose directory where stores your submissions's folder.</li>
+  <li>Choose directory where stores your submissions's folders.</li>
   <img src="https://c2.staticflickr.com/8/7919/45854496255_8f6fb910c9_o.png"></img>
   <li>Choose the collecting mode. There are also three modes for you:
     <ul>

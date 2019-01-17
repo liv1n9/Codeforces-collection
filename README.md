@@ -4,7 +4,7 @@
 <p>Requirement: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 8u202</a> or above.</p>
 <p>Codeforces-collection supports Windows 10 and Linux/Ubuntu.</p>
 <h1>Update</h1>
-I remove all the source codes since i realize we can see them in jar file
+I remove all the source codes since i realize we can see them in jar file.
 <h1>Instruction</h1>
 <p>To run the application, you need to excute jar file: <code>/classes/artifacts/codeforces_collection_jar/codeforces-collection.jar</code>.</p>
 <p>Your submissions will be stored in many folders, each folder represents one contest. For example, you submissions of contest 321 will be stored in folder "321".</p>
@@ -17,7 +17,7 @@ I remove all the source codes since i realize we can see them in jar file
   <img src="https://c2.staticflickr.com/8/7919/45854496255_8f6fb910c9_o.png"></img>
   <li>Choose collecting mode. There are also three modes for you:
     <ul>
-      <li><strong>All</strong>: You will get all your accepted submissions. If you got more than one accepted submission of one problem, for example 2 accepted C++ submissions of problem 265C, you will get 2 file <code>265c_1.cpp</code>, <code>265c_2.cpp</code>. Otherwise you will get only one file, for example <code>265c.cpp</code>.</li>
+      <li><strong>All</strong>: You will get all your accepted submissions. If you got more than one accepted submissions of one problem, for example 2 accepted C++ submissions of problem 265C, you will get 2 files <code>265c_1.cpp</code>, <code>265c_2.cpp</code>. Otherwise you will get only one file, for example <code>265c.cpp</code>.</li>
       <li><strong>Time</strong>: For each problem, you will get an accepted submission which has fastest running time.</li>
       <li><strong>Memory</strong>: For each problem, you will get an accepted submission which has smallest memory used.</li>
     </ul>

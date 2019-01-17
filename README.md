@@ -15,7 +15,7 @@
   <img src="https://c2.staticflickr.com/8/7919/45854496255_8f6fb910c9_o.png"></img>
   <li>Choose the collecting mode. There are also three modes for you:
     <ul>
-      <li><strong>All</strong>: You will get all your accepted submissions. If you got more than one accepted submission of one problem, for example 2 accepted C++ submissions of problem 265C, you will get 2 file 265c_1.cpp, 265c_2.cpp. Otherwise you will get only one file, for example 265c.cpp.</li>
+      <li><strong>All</strong>: You will get all your accepted submissions. If you got more than one accepted submission of one problem, for example 2 accepted C++ submissions of problem 265C, you will get 2 file <code>265c_1.cpp</code>, <code>265c_2.cpp</code>. Otherwise you will get only one file, for example <code>265c.cpp</code>.</li>
       <li><strong>Time</strong>: For each problem, you will get an accepted submission which has fastest running time.</li>
       <li><strong>Memory</strong>: For each problem, you will get an accepted submission which has smallest memory used.</li>
     </ul>

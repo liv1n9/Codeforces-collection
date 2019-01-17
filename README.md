@@ -9,7 +9,7 @@
 <img src="https://c2.staticflickr.com/8/7846/39804422223_d6350c9d72_z.jpg"></img>
 <p>There are three steps you need to do:</p>
 <ol>
-  <li>Enter a handle of you (or of someone that you love).</li>
+  <li>Enter a handle of you (or of someone that you love). You only be able to type an exist handle</li>
   <img src="https://c2.staticflickr.com/8/7880/32894102398_93d939d6d5_o.png"></img>
   <li>Choose directory where store your submissions's folder.</li>
   <img src="https://c2.staticflickr.com/8/7919/45854496255_8f6fb910c9_o.png"></img>
@@ -21,7 +21,7 @@
     </ul>
   </li>
 </ol>
-<p>Now press "Get" and enjoy!</p>
+<p>Now press "Get" and enjoy! Don't worry if you miss some steps, because there will be a reminder.</p>
 <img src="https://c2.staticflickr.com/8/7802/46769801651_a83a4fbe1f_o.png"></img>
 <h1>Issues</h1>
 <p>This project is my Java practicing, so the application might get some issues.</p>
